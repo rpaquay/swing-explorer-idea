@@ -1,5 +1,7 @@
 <idea-plugin version="2" url="http://swingexplorer.com">
+   <id>swingexplorer-plugin</id>
    <name>SwingExplorer Integration</name>
+   <version>1.6.1</version>
    <description><![CDATA[
       <p>	  
       The plug-in integrates SwingExplorer into IntelliJ IDEA. 
@@ -12,13 +14,11 @@
       </p>
    ]]></description>
    <change-notes><![CDATA[
-	Incorporates Swing Explorer 1.6.0
+	Incorporates Swing Explorer 1.6.0, works with IntelliJ 14+.
    ]]></change-notes>
-   <version>1.6.0</version>
    <vendor email="info@swingexplorer.com" url="http://www.swingexplorer.com">Swing Explorer</vendor>
-   <id>swingexplorer-plugin</id>
 
-   <idea-version since-build="107.105"/>
+   <idea-version since-build="139"/>
 
    <extensions defaultExtensionNs="com.intellij">
       <executor implementation="org.swingexplorer.intellij.plugin.Executor"/>

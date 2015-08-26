@@ -64,11 +64,10 @@ public class Runner extends DefaultProgramRunner {
 	}
 
 	@Override
-	protected RunContentDescriptor doExecute(Project project,
-			RunProfileState runProfileState,
-			RunContentDescriptor runContentDescriptor,
-			ExecutionEnvironment executionEnvironment)
+	protected RunContentDescriptor doExecute(@NotNull RunProfileState runProfileState, @NotNull ExecutionEnvironment executionEnvironment)
 			throws ExecutionException {
+		Project project = executionEnvironment.getProject();
+
 		this.project = project;
 
 		FileDocumentManager.getInstance().saveAllDocuments();
@@ -80,14 +79,11 @@ public class Runner extends DefaultProgramRunner {
 		if (executionResult == null)
 			return null;
 
-		final RunContentBuilder contentBuilder = new RunContentBuilder(project,
-				this, executor);
-		contentBuilder.setExecutionResult(executionResult);
-		contentBuilder.setEnvironment(executionEnvironment);
+		final RunContentBuilder contentBuilder = new RunContentBuilder(executionResult, executionEnvironment);
 
 		initListener();
 
-		return contentBuilder.showRunContent(runContentDescriptor);
+		return contentBuilder.showRunContent(executionEnvironment.getContentToReuse());
 	}
 
 	private void initJavaSettings(RunProfileState runProfileState)
